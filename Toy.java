@@ -1,4 +1,5 @@
 import java.io.PrintWriter;
+import java.util.Random;
 
 public class Toy implements Comparable<Toy>{
     private int id;
@@ -18,6 +19,7 @@ public class Toy implements Comparable<Toy>{
 
     @Override
     public int compareTo(Toy o) {
-        return o.weigh - this.weigh;
+        Random random = new Random();
+        return o.weigh * random.nextInt(1, 11) - this.weigh * random.nextInt(1, 11);
     }
 }
