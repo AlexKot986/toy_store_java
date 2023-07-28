@@ -1,4 +1,3 @@
-import java.io.PrintWriter;
 import java.util.Random;
 
 public class Toy implements Comparable<Toy>{
@@ -11,6 +10,8 @@ public class Toy implements Comparable<Toy>{
         this.weigh = weigh;
         this.name = name;
     }
+
+    public void setWeigh(int weigh) { this.weigh = weigh; }
 
     @Override
     public String toString() {
