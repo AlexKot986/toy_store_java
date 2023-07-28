@@ -1,5 +1,10 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Store myStore = getStore();
 
@@ -8,17 +13,7 @@ public class Main {
 
         System.out.println();
 
-        Raffle raffle = new Raffle();
-        raffle.put(myStore.getToys());
-
-        raffle.getRaffle();
-
-
-
-
-
-
-
+        get(myStore, 10);
 
 
     }
@@ -29,5 +24,22 @@ public class Main {
         store.addToy(new Toy(3,6, "Плюшевый мишка"));
         store.addToy(new Toy(4, 1, "Конструктор"));
         return store;
+    }
+
+    public static void get(Store store, int number) throws IOException {
+
+        WriterTXT writerTXT = new WriterTXT();
+        Raffle raffle = new Raffle();
+        List<String> lines = new ArrayList<>();
+
+        for (int i = 0; i < number; i++) {
+            raffle.put(store.getToys());
+            PriorityQueue<Toy> queue = raffle.getRaffleQueue();
+            lines.add(String.format("%d -------------------------------------", i + 1));
+
+            while (queue.size() != 0)
+                lines.add(queue.poll().toString());
+        }
+        writerTXT.writeFile("raffle_file.txt", lines);
     }
 }

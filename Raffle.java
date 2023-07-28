@@ -6,6 +6,8 @@ public class Raffle {
 
     public Raffle() { raffleQueue = new PriorityQueue<>(); }
 
+    public PriorityQueue<Toy> getRaffleQueue() { return  raffleQueue; }
+
     public void put(Toy toy) { raffleQueue.add(toy); }
 
     public void put(List<Toy> toys) {
